@@ -4,26 +4,45 @@ body {
     padding: 0;
     background-color: #ffffff;
     overflow-x: hidden;
-    /* Hide horizontal scrollbar */
-    background-image: url('moon-2048727_1280.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
+    transition: background-color 0.5s ease;
 }
+
+.darken-background {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.caption1,
+.caption2,
+.caption3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.caption1.active,
+.caption2.active,
+.caption3.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .photo.active {
     opacity: 1;
     transform: translateY(0);
 }
-.orange{
+
+.orange {
     background-color: rgb(255, 153, 51);
     font-family: 'Courier New', Courier, monospace;
 }
-.white{
+
+.white {
     background-color: white;
     font-family: 'Courier New', Courier, monospace;
 }
-.green{
+
+.green {
     background-color: #138808;
 }
 
@@ -70,7 +89,8 @@ nav a {
     display: flex;
     align-items: center;
     color: #ffffff;
-    transition: background-color 0.3s ease-in-out; /* Add transition for background color change */
+    transition: background-color 0.3s ease-in-out;
+
 }
 
 
@@ -87,24 +107,32 @@ nav a {
     gap: 20px;
 }
 
+
 .photo {
     position: relative;
     overflow: hidden;
-    margin-top: 70px;
-    
+    margin-top: 20px;
+    /* Adjust the margin to create spacing between images */
+    width: calc(50% - 20px);
+    /* Set each image's width to 50% minus the gap */
+    transition: background-color 0.3s ease-in-out;
 }
-
 
 .photo img {
     max-width: 100%;
     height: auto;
     transition: transform 0.2s;
-    
+}
+
+.photo:hover {
+    background-color: rgba(102, 102, 102, 0.7);
 }
 
 .photo:hover img {
     transform: scale(1.1);
 }
+
+
 
 .photo:hover::before {
     content: "";
@@ -115,15 +143,12 @@ nav a {
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.4);
     pointer-events: none;
-    
 }
 
 .caption1 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    
-
 }
 
 .caption2 {
@@ -141,4 +166,10 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
+}
+
+.image-info-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
 }
